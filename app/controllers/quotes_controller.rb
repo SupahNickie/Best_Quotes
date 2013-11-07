@@ -2,7 +2,7 @@ class QuotesController < Rulers::Controller
 
   def index
     quotes = FileModel.all
-    render :index, :quotes => quotes
+    render_response :index, :quotes => quotes
   end
 
   def show
@@ -18,18 +18,12 @@ class QuotesController < Rulers::Controller
       "attribution" => "You"
     }
     m = FileModel.create attrs
-    puts m.inspect
     render :quote, :obj => m
   end
 
   def a_quote
     @verb = "go to church"
     render :a_quote, :noun => :winking
-  end
-
-  def quote_1
-    quote_1 = Rulers::Model::FileModel.find(1)
-    render :quote, :obj => quote_1
   end
 
 end
